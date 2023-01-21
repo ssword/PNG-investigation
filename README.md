@@ -75,3 +75,20 @@ You may recall that the IHDR chunk has a "Filter method" field. The only specifi
 In Adaptive Filtering, each row of pixels is prefixed by a single byte that describes the Filter Type used for that particular row. There are 5 possible Filter Types, but for now, we're only going to care about type 0, which means "None".
 If we had a tiny 3x2 pixel image comprised of all-white pixels, the filtered image data would look something like this: (byte values expressed in decimal)
 
+```code
+0   255 255 255  255 255 255  255 255 255
+0   255 255 255  255 255 255  255 255 255
+```
+
+### Compression
+
+Once the image data has been filtered, it needs to be compressed. You may recall that the IHDR chunk has a "Compression method" field. The only compression method specified is method 0 - a similar situation to the Filter Method field. Method 0 corresponds to DEFLATE-compressed data stored in the "zlib" format. 
+
+Additional things to do:
+
+- Support for other bit-depths.
+- Indexed colour (i.e. using a palette)
+- Further metadata, and other chunk types.
+- Interlacing.
+- The other filter types.
+- APNG.
